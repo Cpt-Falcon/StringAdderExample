@@ -3,3 +3,6 @@
 ################################################################################
 
 /StringAdder/bin/Debug
+/StringAdder/obj/Debug
+/UnitTestStringAdder/obj/Debug
+/.vs
