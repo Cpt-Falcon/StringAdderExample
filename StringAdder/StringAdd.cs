@@ -29,6 +29,7 @@ namespace StringAdder
         /// <returns>Whether the program was successful.</returns>
         public static int Add(string numbers)
         {
+            string originalNumbers = numbers;
             if (string.IsNullOrEmpty(numbers))
             {
                 return 0;
@@ -49,7 +50,7 @@ namespace StringAdder
             int sum = CalculateSumFromSplitNumbers(splitNumbers);
 
             // Add to the cache if not found.
-            numberCache.Add(numbers, sum);
+            numberCache.Add(originalNumbers, sum);
             return sum;
         }
 
