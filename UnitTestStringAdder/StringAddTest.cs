@@ -47,5 +47,55 @@ namespace UnitTestStringAdder
             Assert.AreEqual(999, StringAdd.Add("0,999"));
             Assert.AreEqual(22, StringAdd.Add("10,12"));
         }
+
+        /// <summary>
+        /// Tests whether a string with a N numbers will work.
+        /// </summary>
+        [TestMethod]
+        public void AddManyNumbersTest()
+        {
+            string testString = string.Empty;
+            int sum = 0;
+
+            // Test with 10 numbers and calculate a sum of them as well to check.
+            for (int i = 0; i < 10; i++)
+            {
+                sum += i;
+
+                // Check if final number so it doesn't add comma at the end.
+                if (i == 9)
+                {
+                    testString += i.ToString(); 
+                }
+                else
+                {
+                    testString += i.ToString() + ",";
+                }
+            }
+
+            Assert.AreEqual(sum, StringAdd.Add(testString));
+
+            // Reset the sum and string.
+            testString = string.Empty;
+            sum = 0;
+
+            // Test with 100 numbers and calculate a sum of them as well to check.
+            for (int i = 0; i < 100; i++)
+            {
+                sum += i;
+
+                // Check if final number so it doesn't add comma at the end.
+                if (i == 99)
+                {
+                    testString += i.ToString();
+                }
+                else
+                {
+                    testString += i.ToString() + ",";
+                }
+            }
+
+            Assert.AreEqual(sum, StringAdd.Add(testString));
+        }
     }
 }
