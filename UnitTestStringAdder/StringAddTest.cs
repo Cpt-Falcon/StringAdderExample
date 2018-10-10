@@ -124,7 +124,7 @@ namespace UnitTestStringAdder
         }
 
         /// <summary>
-        /// Tests whether a string with custom single character delimeters works.
+        /// Tests whether adding negative numbers causes an exception and returns the appropriate error message.
         /// </summary>
         [TestMethod]
         public void AddNegativeNumbersExceptionTest()
@@ -134,6 +134,17 @@ namespace UnitTestStringAdder
 
             ex = Assert.ThrowsException<NegativesNotAllowed>(() => StringAdd.Add("//;\n-1;-2,-3,-4,-5,-6,-7;-8,-9,-10"));
             Assert.AreEqual("negatives not allowed -1 -2 -3 -4 -5 -6 -7 -8 -9 -10", ex.Message);
+        }
+
+        /// <summary>
+        /// Tests whether adding negative numbers causes an exception and returns the appropriate error message.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersGreaterThan1000Test()
+        {
+            Assert.AreEqual(3, StringAdd.Add("//;\n1;2000;2"));
+            Assert.AreEqual(23, StringAdd.Add("//z\n2z9\n5,7,5,1000"));
+            Assert.AreEqual(1037, StringAdd.Add("//-\n2,9\n5,7-1-2-3-4-5-999"));
         }
     }
 }

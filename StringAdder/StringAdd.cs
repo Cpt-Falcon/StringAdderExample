@@ -43,7 +43,7 @@ namespace StringAdder
                         foundNegatives = true;
                     }
 
-                    sum += parsedNumber;
+                    sum += parsedNumber; 
                 }
             }
 
