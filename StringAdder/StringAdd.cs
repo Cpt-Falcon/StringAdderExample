@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Program.cs" company="Personal">
+// <copyright file="StringAdd.cs" company="Personal">
 //     For demonstration purposes, copyright not applicable.
 // </copyright>
 // <author>Aubrey Russell</author>
@@ -9,16 +9,18 @@
 namespace StringAdder
 {
     /// <summary>
-    /// The start of the console application.
+    /// Contains methods and logic for adding a string together.
     /// </summary>
-    public class Program
+    public static class StringAdd
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Program"/> class.
+        /// Adds a simple string.
         /// </summary>
-        /// <param name="args">The main method arguments.</param>
-        public static void Main(string[] args)
+        /// <param name="numbers">The numbers, in string format, that should be added.</param>
+        /// <returns>Whether the program was successful.</returns>
+        public static int Add(string numbers)
         {
+            return 0;
         }
     }
 }

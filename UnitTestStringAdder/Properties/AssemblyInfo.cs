@@ -1,3 +1,11 @@
+//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="Personal">
+//     For demonstration purposes, copyright not applicable.
+// </copyright>
+// <author>Aubrey Russell</author>
+// <date>10/9/2018</date>
+//-----------------------------------------------------------------------
+
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;

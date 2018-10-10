@@ -6,3 +6,6 @@
 /StringAdder/obj/Debug
 /UnitTestStringAdder/obj/Debug
 /.vs
+/packages
+/StringAdder/obj/Release
+/UnitTestStringAdder/obj/Release
