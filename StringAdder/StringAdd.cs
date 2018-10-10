@@ -20,7 +20,18 @@ namespace StringAdder
         /// <returns>Whether the program was successful.</returns>
         public static int Add(string numbers)
         {
-            return 0;
+            int sum = 0;
+            string[] splitNumbers = numbers.Split(',');
+            foreach (string number in splitNumbers)
+            {
+                int parsedNumber;
+                if (int.TryParse(number, out parsedNumber))
+                {
+                    sum += parsedNumber;
+                }
+            }
+
+            return sum;
         }
     }
 }
