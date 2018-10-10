@@ -18,6 +18,11 @@ namespace StringAdder
     public static class StringAdd
     {
         /// <summary>
+        /// Use dynamic programming the improve performance for repetitive strings.
+        /// </summary>
+        private static Dictionary<string, int> numberCache = new Dictionary<string, int>();
+
+        /// <summary>
         /// Adds a simple string.
         /// </summary>
         /// <param name="numbers">The numbers, in string format, that should be added.</param>
@@ -29,14 +34,34 @@ namespace StringAdder
                 return 0;
             }
 
-            const int MaxNumber = 1000;
+            // Try to get the cached value if possible to avoid the more costly processing.
+            int cachedValue;
+            if (numberCache.TryGetValue(numbers, out cachedValue))
+            {
+                return cachedValue;
+            }
 
             // Use the string delimiter to store all delimiters along with default ones.
             List<string> delimiterList = new List<string>() { ",", "\n" };
             numbers = GetAndParseCustomDelimeters(numbers, delimiterList);
-            int sum = 0;
             string[] delimiters = delimiterList.ToArray();
             string[] splitNumbers = numbers.Split(delimiters, StringSplitOptions.None);
+            int sum = CalculateSumFromSplitNumbers(splitNumbers);
+
+            // Add to the cache if not found.
+            numberCache.Add(numbers, sum);
+            return sum;
+        }
+
+        /// <summary>
+        /// Calculate the sum from the split numbers and throw an exception if it has negative numbers.
+        /// </summary>
+        /// <param name="splitNumbers">The split numbers.</param>
+        /// <returns>The total sum.</returns>
+        private static int CalculateSumFromSplitNumbers(string[] splitNumbers)
+        {
+            const int MaxNumber = 1000;
+            int sum = 0;
             bool foundNegatives = false;
             string negativeNumbers = "negatives not allowed ";
             foreach (string number in splitNumbers)
@@ -54,7 +79,7 @@ namespace StringAdder
                     // Don't add numbers to the sum if they are bigger than the max number.
                     if (parsedNumber <= MaxNumber)
                     {
-                        sum += parsedNumber; 
+                        sum += parsedNumber;
                     }
                 }
             }

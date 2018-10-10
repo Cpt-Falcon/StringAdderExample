@@ -147,5 +147,16 @@ namespace UnitTestStringAdder
             Assert.AreEqual(1038, StringAdd.Add("//-\n2,9\n5,7-1-2-3-4-5-1000"));
             Assert.AreEqual(2, StringAdd.Add("1001,2"));
         }
+
+        /// <summary>
+        /// Add Numbers that have a multiple length delimiter with the square brackets syntax. 
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersWithDelimitersOfAnylength()
+        {
+            Assert.AreEqual(6, StringAdd.Add("//[***]\n1***2***3"));
+            Assert.AreEqual(6, StringAdd.Add("//[;]\n1;2;3"));
+            Assert.AreEqual(21, StringAdd.Add("//[;()]\n1;()2;()3,4,5\n6"));
+        }
     }
 }
