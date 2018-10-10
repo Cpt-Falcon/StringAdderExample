@@ -21,7 +21,8 @@ namespace StringAdder
         public static int Add(string numbers)
         {
             int sum = 0;
-            string[] splitNumbers = numbers.Split(',');
+            char[] splitParams = { ',', '\n' };
+            string[] splitNumbers = numbers.Split(splitParams);
             foreach (string number in splitNumbers)
             {
                 int parsedNumber;
