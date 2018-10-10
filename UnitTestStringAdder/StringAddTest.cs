@@ -107,5 +107,16 @@ namespace UnitTestStringAdder
             Assert.AreEqual(6, StringAdd.Add("1\n2,3"));
             Assert.AreEqual(37, StringAdd.Add("5\n6\n2,5,9\n10"));
         }
+
+        /// <summary>
+        /// Tests whether a string with custom single character delimeters works.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersWithDifferentSingleCharacterDelimetersTest()
+        {
+            Assert.AreEqual(3, StringAdd.Add("//;\n1;2"));
+            Assert.AreEqual(23, StringAdd.Add("//z\n2z9\n5,7"));
+            Assert.AreEqual(38, StringAdd.Add("//-\n2,9\n5,7-1-2-3-4-5"));
+        }
     }
 }
