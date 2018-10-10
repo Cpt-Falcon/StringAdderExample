@@ -54,6 +54,14 @@ namespace StringAdder
         }
 
         /// <summary>
+        /// Clear the cache of its contents.
+        /// </summary>
+        public static void ClearCache()
+        {
+            numberCache.Clear();
+        }
+
+        /// <summary>
         /// Calculate the sum from the split numbers and throw an exception if it has negative numbers.
         /// </summary>
         /// <param name="splitNumbers">The split numbers.</param>
@@ -112,7 +120,21 @@ namespace StringAdder
 
                     // We only want the contents after the two slashes and until right before the new line.
                     string contents = match.Substring(2, match.Length - 3);
-                    delimiterList.Add(contents);
+
+                    MatchCollection matchCollection = Regex.Matches(contents, "\\[(.*?)\\]");
+                    if (matchCollection.Count > 0)
+                    {
+                        char[] trimBrackets = { '[', ']' };
+                        foreach (Match squareBracketMatch in matchCollection)
+                        {
+                            delimiterList.Add(squareBracketMatch.Value.Trim(trimBrackets));
+                        }
+                    }
+                    else
+                    {
+                        delimiterList.Add(contents);
+                    }
+
                     numbers = numbers.Substring(match.Length, numbers.Length - match.Length);
                 } 
             }

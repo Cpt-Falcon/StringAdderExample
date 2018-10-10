@@ -158,5 +158,14 @@ namespace UnitTestStringAdder
             Assert.AreEqual(6, StringAdd.Add("//[;]\n1;2;3"));
             Assert.AreEqual(21, StringAdd.Add("//[;()]\n1;()2;()3,4,5\n6"));
         }
+
+        /// <summary>
+        /// Cleans up the cache at the end of the test.
+        /// </summary>
+        [TestCleanup()]
+        public void Cleanup()
+        {
+            StringAdd.ClearCache();
+        }
     }
 }
