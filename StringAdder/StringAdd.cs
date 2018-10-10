@@ -24,18 +24,32 @@ namespace StringAdder
         /// <returns>Whether the program was successful.</returns>
         public static int Add(string numbers)
         {
+            // Use the string delimiter to store all delimiters along with default ones.
             List<string> delimiterList = new List<string>() { ",", "\n" };
             numbers = GetAndParseCustomDelimeters(numbers, delimiterList);
             int sum = 0;
             string[] delimiters = delimiterList.ToArray();
             string[] splitNumbers = numbers.Split(delimiters, StringSplitOptions.None);
+            bool foundNegatives = false;
+            string negativeNumbers = "negatives not allowed ";
             foreach (string number in splitNumbers)
             {
                 int parsedNumber;
                 if (int.TryParse(number, out parsedNumber))
                 {
+                    if (parsedNumber < 0)
+                    {
+                        negativeNumbers += parsedNumber.ToString() + " ";
+                        foundNegatives = true;
+                    }
+
                     sum += parsedNumber;
                 }
+            }
+
+            if (foundNegatives)
+            {
+                throw new NegativesNotAllowed(negativeNumbers.TrimEnd());
             }
 
             return sum;
@@ -56,8 +70,8 @@ namespace StringAdder
                 {
                     // In this case we know we're going to be looking for custom delimeters.
                     // The regex captures the string from the slash to the new line character.
-                    Regex customDelimRegex = new Regex("/(.*?)\\n");
-                    string match = customDelimRegex.Match(numbers).Value;
+                    // Also better performance from using static pattern matching to reduce object instantiation.
+                    string match = Regex.Match(numbers, "/(.*?)\\n").Value;
 
                     // We only want the contents after the two slashes and until right before the new line.
                     string contents = match.Substring(2, match.Length - 3);

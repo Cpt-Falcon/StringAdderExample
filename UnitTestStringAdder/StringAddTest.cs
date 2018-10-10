@@ -8,6 +8,7 @@
 
 namespace UnitTestStringAdder
 {
+    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using StringAdder;
 
@@ -117,6 +118,22 @@ namespace UnitTestStringAdder
             Assert.AreEqual(3, StringAdd.Add("//;\n1;2"));
             Assert.AreEqual(23, StringAdd.Add("//z\n2z9\n5,7"));
             Assert.AreEqual(38, StringAdd.Add("//-\n2,9\n5,7-1-2-3-4-5"));
+            
+            // Test that the empty case doesn't cause an argument out of range exception.
+            Assert.AreEqual(3, StringAdd.Add("//\n1,2"));
+        }
+
+        /// <summary>
+        /// Tests whether a string with custom single character delimeters works.
+        /// </summary>
+        [TestMethod]
+        public void AddNegativeNumbersExceptionTest()
+        {
+            var ex = Assert.ThrowsException<NegativesNotAllowed>(() => StringAdd.Add("10,9,8,44,12,-20,5,10,-2"));
+            Assert.AreEqual("negatives not allowed -20 -2", ex.Message);
+
+            ex = Assert.ThrowsException<NegativesNotAllowed>(() => StringAdd.Add("//;\n-1;-2,-3,-4,-5,-6,-7;-8,-9,-10"));
+            Assert.AreEqual("negatives not allowed -1 -2 -3 -4 -5 -6 -7 -8 -9 -10", ex.Message);
         }
     }
 }
