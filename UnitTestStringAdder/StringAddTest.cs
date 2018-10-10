@@ -137,14 +137,15 @@ namespace UnitTestStringAdder
         }
 
         /// <summary>
-        /// Tests whether adding negative numbers causes an exception and returns the appropriate error message.
+        /// Add Numbers greater than 1000 and test to make sure that larger numbers are not included in the sum.
         /// </summary>
         [TestMethod]
         public void AddNumbersGreaterThan1000Test()
         {
             Assert.AreEqual(3, StringAdd.Add("//;\n1;2000;2"));
-            Assert.AreEqual(23, StringAdd.Add("//z\n2z9\n5,7,5,1000"));
-            Assert.AreEqual(1037, StringAdd.Add("//-\n2,9\n5,7-1-2-3-4-5-999"));
+            Assert.AreEqual(28, StringAdd.Add("//z\n2z9\n5,7,5,1001"));
+            Assert.AreEqual(1038, StringAdd.Add("//-\n2,9\n5,7-1-2-3-4-5-1000"));
+            Assert.AreEqual(2, StringAdd.Add("1001,2"));
         }
     }
 }

@@ -24,6 +24,11 @@ namespace StringAdder
         /// <returns>Whether the program was successful.</returns>
         public static int Add(string numbers)
         {
+            if (string.IsNullOrEmpty(numbers))
+            {
+                return 0;
+            }
+
             // Use the string delimiter to store all delimiters along with default ones.
             List<string> delimiterList = new List<string>() { ",", "\n" };
             numbers = GetAndParseCustomDelimeters(numbers, delimiterList);
@@ -37,6 +42,7 @@ namespace StringAdder
                 int parsedNumber;
                 if (int.TryParse(number, out parsedNumber))
                 {
+                    // Exclude negative numbers and change the found negative boolean to throw an exception later.
                     if (parsedNumber < 0)
                     {
                         negativeNumbers += parsedNumber.ToString() + " ";
