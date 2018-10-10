@@ -97,5 +97,15 @@ namespace UnitTestStringAdder
 
             Assert.AreEqual(sum, StringAdd.Add(testString));
         }
+
+        /// <summary>
+        /// Tests whether a string with commas and new lines can be added.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersWithNewLineCharactersTest()
+        {
+            Assert.AreEqual(6, StringAdd.Add("1\n2,3"));
+            Assert.AreEqual(37, StringAdd.Add("5\n6\n2,5,9\n10"));
+        }
     }
 }
