@@ -29,6 +29,8 @@ namespace StringAdder
                 return 0;
             }
 
+            const int MaxNumber = 1000;
+
             // Use the string delimiter to store all delimiters along with default ones.
             List<string> delimiterList = new List<string>() { ",", "\n" };
             numbers = GetAndParseCustomDelimeters(numbers, delimiterList);
@@ -49,7 +51,11 @@ namespace StringAdder
                         foundNegatives = true;
                     }
 
-                    sum += parsedNumber; 
+                    // Don't add numbers to the sum if they are bigger than the max number.
+                    if (parsedNumber <= MaxNumber)
+                    {
+                        sum += parsedNumber; 
+                    }
                 }
             }
 

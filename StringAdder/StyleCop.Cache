@@ -23,9 +23,6 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <project key="81547936">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="NegativesNotAllowed.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2017/07/29 10:43:06.000</styleCop>
@@ -95,11 +92,14 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <project key="81547936">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="StringAdd.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2017/07/29 10:43:06.000</styleCop>
       <settingsFile>2017/07/29 10:43:06.000</settingsFile>
-      <sourceFile>2018/10/10 00:44:10.995</sourceFile>
+      <sourceFile>2018/10/10 00:57:33.195</sourceFile>
       <parser>2017/07/29 10:43:06.000</parser>
       <StyleCop.CSharp.DocumentationRules>2017/07/29 10:43:06.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -116,12 +116,6 @@
       <StyleCop.CSharp.SpacingRules>2017/07/29 10:43:06.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentMustBePrecededByBlankLine" ruleCheckId="SA1515">
-        <context>A single-line comment must be preceded by a blank line or another single-line comment, or must be the first item in its scope. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>28</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
 </stylecopresultscache>
