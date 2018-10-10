@@ -8,6 +8,10 @@
 
 namespace StringAdder
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Contains methods and logic for adding a string together.
     /// </summary>
@@ -20,9 +24,11 @@ namespace StringAdder
         /// <returns>Whether the program was successful.</returns>
         public static int Add(string numbers)
         {
+            List<string> delimiterList = new List<string>() { ",", "\n" };
+            numbers = GetAndParseCustomDelimeters(numbers, delimiterList);
             int sum = 0;
-            char[] splitParams = { ',', '\n' };
-            string[] splitNumbers = numbers.Split(splitParams);
+            string[] delimiters = delimiterList.ToArray();
+            string[] splitNumbers = numbers.Split(delimiters, StringSplitOptions.None);
             foreach (string number in splitNumbers)
             {
                 int parsedNumber;
@@ -33,6 +39,34 @@ namespace StringAdder
             }
 
             return sum;
+        }
+
+        /// <summary>
+        /// Gets, parses, and adds a delimiter to the list if its 
+        /// </summary>
+        /// <param name="numbers">The number string to parse.</param>
+        /// <param name="delimiterList">The delimiter list to add delimiters to.</param>
+        /// <returns>The remainder string with the delimiters removed.</returns>
+        private static string GetAndParseCustomDelimeters(string numbers, List<string> delimiterList)
+        {
+            if (numbers.Length >= 2)
+            {
+                string checkCustomDelimeters = numbers.Substring(0, 2);
+                if (checkCustomDelimeters == "//")
+                {
+                    // In this case we know we're going to be looking for custom delimeters.
+                    // The regex captures the string from the slash to the new line character.
+                    Regex customDelimRegex = new Regex("/(.*?)\\n");
+                    string match = customDelimRegex.Match(numbers).Value;
+
+                    // We only want the contents after the two slashes and until right before the new line.
+                    string contents = match.Substring(2, match.Length - 3);
+                    delimiterList.Add(contents);
+                    numbers = numbers.Substring(match.Length, numbers.Length - match.Length);
+                } 
+            }
+
+            return numbers;
         }
     }
 }
