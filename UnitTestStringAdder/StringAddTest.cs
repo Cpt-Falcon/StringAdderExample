@@ -208,6 +208,16 @@ namespace UnitTestStringAdder
         }
 
         /// <summary>
+        /// Test empty bracket delimiter. 
+        /// The result should be the same as if there were no empty bracket to gracefully handle a user mistake.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersWithEmptyBracket()
+        {
+            Assert.AreEqual(15, StringAdd.Add("//[*][][&][]\n1*2*3&4&5"));
+        }
+
+        /// <summary>
         /// Cleans up the cache at the end of the test.
         /// </summary>
         [TestCleanup]
