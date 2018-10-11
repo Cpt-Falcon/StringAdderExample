@@ -168,13 +168,13 @@ namespace UnitTestStringAdder
         [TestMethod]
         public void AddNumbersLongStringPerformanceTest()
         {
-            const long millisecondsPerSeconds = 1000; 
+            const long MillisecondsPerSeconds = 1000; 
             string longStr = "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
             Stopwatch stopwatch1 = Stopwatch.StartNew();
 
             Assert.AreEqual(68, StringAdd.Add("//[" + longStr + "]\n9" + longStr + "10" + longStr + "11" + longStr + "12" + longStr + "5" + longStr + "6" + longStr + "7" + longStr + "8"));
             stopwatch1.Stop();
-            Assert.IsTrue(stopwatch1.ElapsedMilliseconds < millisecondsPerSeconds, stopwatch1.ElapsedMilliseconds.ToString());
+            Assert.IsTrue(stopwatch1.ElapsedMilliseconds < MillisecondsPerSeconds, stopwatch1.ElapsedMilliseconds.ToString());
         }
 
         /// <summary>
@@ -186,7 +186,6 @@ namespace UnitTestStringAdder
             Assert.AreEqual(6, StringAdd.Add("//[*][%]\n1*2%3"));
             Assert.AreEqual(28, StringAdd.Add("//[*][%][&][a][b][c]\n1*2%3&4a5b6c7"));
         }
-
 
         /// <summary>
         /// Add a string that has multiple delimiters, hard case with multi character delimiters.
@@ -201,7 +200,7 @@ namespace UnitTestStringAdder
         /// <summary>
         /// Cleans up the cache at the end of the test.
         /// </summary>
-        [TestCleanup()]
+        [TestCleanup]
         public void Cleanup()
         {
             StringAdd.ClearCache();
