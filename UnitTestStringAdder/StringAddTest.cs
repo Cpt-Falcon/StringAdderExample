@@ -178,6 +178,27 @@ namespace UnitTestStringAdder
         }
 
         /// <summary>
+        /// Add a string that has multiple delimiters, easy case with one character delimiters.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersThatAllowMultipleDelimitersTest()
+        {
+            Assert.AreEqual(6, StringAdd.Add("//[*][%]\n1*2%3"));
+            Assert.AreEqual(28, StringAdd.Add("//[*][%][&][a][b][c]\n1*2%3&4a5b6c7"));
+        }
+
+
+        /// <summary>
+        /// Add a string that has multiple delimiters, hard case with multi character delimiters.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersThatAllowMultipleDelimitersWithVaryingLengthsTest()
+        {
+            Assert.AreEqual(6, StringAdd.Add("//[***][%%%]\n1***2%%%3"));
+            Assert.AreEqual(28, StringAdd.Add("//[**][%%%][&][aaaa][b][c-a]\n1**2%%%3&4aaaa5b6c-a7"));
+        }
+
+        /// <summary>
         /// Cleans up the cache at the end of the test.
         /// </summary>
         [TestCleanup()]

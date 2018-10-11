@@ -53,7 +53,7 @@
     <timestamps>
       <styleCop>2017/07/29 10:43:06.000</styleCop>
       <settingsFile>2017/07/29 10:43:06.000</settingsFile>
-      <sourceFile>2018/10/10 20:46:04.817</sourceFile>
+      <sourceFile>2018/10/10 20:56:45.178</sourceFile>
       <parser>2017/07/29 10:43:06.000</parser>
       <StyleCop.CSharp.DocumentationRules>2017/07/29 10:43:06.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -71,6 +71,11 @@
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
+        <context>The code must not contain multiple blank lines in a row.</context>
+        <line>190</line>
+        <warning>False</warning>
+      </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="ConstFieldNamesMustBeginWithUpperCaseLetter" ruleCheckId="SA1303">
         <context>Constants must start with an upper-case letter: millisecondsPerSeconds.</context>
         <line>171</line>
@@ -78,7 +83,7 @@
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AttributeConstructorMustNotUseUnnecessaryParenthesis" ruleCheckId="SA1411">
         <context>The attribute constructor does not need parenthesis, since it's parameter list is empty.</context>
-        <line>183</line>
+        <line>204</line>
         <warning>False</warning>
       </violation>
     </violations>
