@@ -26,10 +26,12 @@ namespace StringAdder
         /// Adds a simple string.
         /// </summary>
         /// <param name="numbers">The numbers, in string format, that should be added.</param>
-        /// <returns>Whether the program was successful.</returns>
+        /// <returns>The sum of the numbers specified.</returns>
         public static int Add(string numbers)
         {
             string originalNumbers = numbers;
+
+            // Microsoft standards say to use this method to validate empty or null strings, and an empty or null string has no sum, so return 0.
             if (string.IsNullOrEmpty(numbers))
             {
                 return 0;

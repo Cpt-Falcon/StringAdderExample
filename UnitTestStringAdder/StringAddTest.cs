@@ -198,6 +198,16 @@ namespace UnitTestStringAdder
         }
 
         /// <summary>
+        /// Test duplicate delimiters edge case. 
+        /// The result should be the same as if there were no duplicate to gracefully handle a user mistake.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersWithDuplicateDelimiters()
+        {
+            Assert.AreEqual(15, StringAdd.Add("//[*][*][&][&]\n1*2*3&4&5"));
+        }
+
+        /// <summary>
         /// Cleans up the cache at the end of the test.
         /// </summary>
         [TestCleanup]
