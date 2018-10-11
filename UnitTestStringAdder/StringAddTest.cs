@@ -9,6 +9,7 @@
 namespace UnitTestStringAdder
 {
     using System;
+    using System.Diagnostics;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using StringAdder;
 
@@ -152,11 +153,28 @@ namespace UnitTestStringAdder
         /// Add Numbers that have a multiple length delimiter with the square brackets syntax. 
         /// </summary>
         [TestMethod]
-        public void AddNumbersWithDelimitersOfAnylength()
+        public void AddNumbersWithDelimitersOfAnylengthTest()
         {
             Assert.AreEqual(6, StringAdd.Add("//[***]\n1***2***3"));
             Assert.AreEqual(6, StringAdd.Add("//[;]\n1;2;3"));
             Assert.AreEqual(21, StringAdd.Add("//[;()]\n1;()2;()3,4,5\n6"));
+        }
+
+        /// <summary>
+        /// Add a really long string to make sure performance is satisfactory. 
+        /// We should be able to see any N^2 behavior or more readily in the amount of time it takes. 
+        /// If its N^2 behavior or more this test should take probably more than a minute. If linear it should be under 1 second or less.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersLongStringPerformanceTest()
+        {
+            const long millisecondsPerSeconds = 1000; 
+            string longStr = "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
+            Stopwatch stopwatch1 = Stopwatch.StartNew();
+
+            Assert.AreEqual(68, StringAdd.Add("//[" + longStr + "]\n9" + longStr + "10" + longStr + "11" + longStr + "12" + longStr + "5" + longStr + "6" + longStr + "7" + longStr + "8"));
+            stopwatch1.Stop();
+            Assert.IsTrue(stopwatch1.ElapsedMilliseconds < millisecondsPerSeconds, stopwatch1.ElapsedMilliseconds.ToString());
         }
 
         /// <summary>

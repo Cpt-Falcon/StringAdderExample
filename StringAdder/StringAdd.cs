@@ -122,6 +122,7 @@ namespace StringAdder
                     // We only want the contents after the two slashes and until right before the new line.
                     string contents = match.Substring(2, match.Length - 3);
 
+                    // Match all instances containing square brackets to parse delimiters in square brackets.
                     MatchCollection matchCollection = Regex.Matches(contents, "\\[(.*?)\\]");
                     if (matchCollection.Count > 0)
                     {
@@ -136,6 +137,7 @@ namespace StringAdder
                         delimiterList.Add(contents);
                     }
 
+                    // Return the numbers string minus the delimiter initialization for better efficiency.
                     numbers = numbers.Substring(match.Length, numbers.Length - match.Length);
                 } 
             }
