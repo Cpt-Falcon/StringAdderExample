@@ -218,6 +218,18 @@ namespace UnitTestStringAdder
         }
 
         /// <summary>
+        /// Test various examples with invalid string definitions.
+        /// </summary>
+        [TestMethod]
+        public void AddNumbersWithMalformedString()
+        {
+            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("////////1,2"));
+            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("//\n1,2"));
+            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("//[[[[[[[[[*][%]\n1*2%3"));
+            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("ausdioausdioasudoiasudio"));
+        }
+
+        /// <summary>
         /// Cleans up the cache at the end of the test.
         /// </summary>
         [TestCleanup]
