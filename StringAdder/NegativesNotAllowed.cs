@@ -13,6 +13,7 @@ namespace StringAdder
     /// <summary>
     /// Exception for not allowed negatives.
     /// </summary>
+    [Serializable]
     public class NegativesNotAllowed : Exception
     {
         /// <summary>

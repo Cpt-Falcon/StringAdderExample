@@ -49,6 +49,7 @@ namespace StringAdder
             numbers = GetAndParseCustomDelimeters(numbers, delimiterList);
             string[] delimiters = delimiterList.ToArray();
             string[] splitNumbers = numbers.Split(delimiters, StringSplitOptions.None);
+
             int sum = CalculateSumFromSplitNumbers(splitNumbers);
 
             // Add to the cache if not found.
@@ -120,6 +121,12 @@ namespace StringAdder
                     // The regex captures the string from the slash to the new line character.
                     // Also better performance from using static pattern matching to reduce object instantiation.
                     string match = Regex.Match(numbers, "/(.*?)\\n").Value;
+
+                    // If there is no match we know this cannot be a valid delimiter initialization.
+                    if (match == string.Empty)
+                    {
+                        throw new ArgumentException("The delimiter initialization is invalid.");
+                    }
 
                     // We only want the contents after the two slashes and until right before the new line.
                     string contents = match.Substring(2, match.Length - 3);

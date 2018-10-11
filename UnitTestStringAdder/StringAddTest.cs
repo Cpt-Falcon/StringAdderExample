@@ -214,6 +214,7 @@ namespace UnitTestStringAdder
         [TestMethod]
         public void AddNumbersWithEmptyBracket()
         {
+            Assert.AreEqual(3, StringAdd.Add("//\n1,2"));
             Assert.AreEqual(15, StringAdd.Add("//[*][][&][]\n1*2*3&4&5"));
         }
 
@@ -223,10 +224,14 @@ namespace UnitTestStringAdder
         [TestMethod]
         public void AddNumbersWithMalformedString()
         {
+            // Should just return 0 since nothing is summed.
+            Assert.AreEqual(0, StringAdd.Add("ausdioausdioasudoiasudio"));
+
+            // We can just trim out the extra brackets and continue in case the user makes a mistake.
+            Assert.AreEqual(6, StringAdd.Add("//[[[[[[[[[*][%]\n1*2%3"));
+            
+            // This is invalid and should throw an exception.
             Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("////////1,2"));
-            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("//\n1,2"));
-            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("//[[[[[[[[[*][%]\n1*2%3"));
-            Assert.ThrowsException<ArgumentException>(() => StringAdd.Add("ausdioausdioasudoiasudio"));
         }
 
         /// <summary>

@@ -8,6 +8,8 @@
 
 namespace StringAdder
 {
+    using System;
+
     /// <summary>
     /// The start of the console application.
     /// </summary>
@@ -19,6 +21,32 @@ namespace StringAdder
         /// <param name="args">The main method arguments.</param>
         public static void Main(string[] args)
         {
+            Console.WriteLine("Add a string with the following format: //[delim1][delim2]\\n   ---   //[*][%]\\n1*2%3");
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input == "exit")
+                {
+                    return;
+                }
+                else
+                {
+                    try
+                    {
+                        // Allows users to type new lines literally without triggering the console read line so that the example work as specified.
+                        input = input.Replace("\\n", "\n");
+                        Console.WriteLine(StringAdd.Add(input));
+                    }
+                    catch (NegativesNotAllowed e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+            }
         }
     }
 }
