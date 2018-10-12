@@ -69,9 +69,6 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <project key="81547936">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="Program.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2018/10/08 22:58:29.991</styleCop>
@@ -95,11 +92,14 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <project key="81547936">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="StringAdd.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2018/10/08 22:58:29.991</styleCop>
       <settingsFile>2018/10/08 22:58:29.937</settingsFile>
-      <sourceFile>2018/10/11 23:39:47.401</sourceFile>
+      <sourceFile>2018/10/11 23:39:58.577</sourceFile>
       <parser>2018/10/08 22:58:29.991</parser>
       <StyleCop.CSharp.DocumentationRules>2018/10/08 22:58:29.991</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
