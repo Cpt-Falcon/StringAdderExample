@@ -33,7 +33,7 @@ namespace StringAdder
                 {
                     try
                     {
-                        // Allows users to type new lines literally without triggering the console read line so that the example work as specified.
+                        // Allows users to type new lines literally without triggering the console read line so that the examples work as specified.
                         input = input.Replace("\\n", "\n");
                         Console.WriteLine(StringAdd.Add(input));
                     }
